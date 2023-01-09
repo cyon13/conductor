@@ -11,7 +11,8 @@ LABEL maintainer="Netflix OSS <conductor@netflix.com>"
 
 # Copy the project directly onto the image
 COPY . /conductor
-WORKDIR /conductor
+COPY ./conductor-community /conductor-community
+WORKDIR /conductor-community
 
 # Build the server on run
 RUN ./gradlew build -x test --stacktrace
@@ -29,7 +30,7 @@ RUN mkdir -p /app/config /app/logs /app/libs
 # Copy the compiled output to new image
 COPY --from=builder /conductor/docker/server/bin /app
 COPY --from=builder /conductor/docker/server/config /app/config
-COPY --from=builder /conductor/server/build/libs/conductor-server-*-boot.jar /app/libs
+COPY --from=builder /conductor-community/community-server/build/libs/conductor-community-server-*-boot.jar /app/libs/conductor-server-*-boot.jar
 
 # Copy the files for the server into the app folders
 RUN chmod +x /app/startup.sh
