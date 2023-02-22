@@ -23,6 +23,9 @@ FROM eclipse-temurin:11-jre-focal
 
 LABEL maintainer="Netflix OSS <conductor@netflix.com>"
 
+# Timezone setting
+RUN ln -Tfs /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
 # Make app folders
 RUN mkdir -p /app/config /app/logs /app/libs
 

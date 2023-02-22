@@ -43,13 +43,14 @@ dependencies {
     implementation "org.springdoc:springdoc-openapi-ui:${revOpenapi}"
 
     implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.8'
-    implementation 'com.netflix.conductor:conductor-mysql-persistence:3.13.2'
-    implementation 'com.netflix.conductor:conductor-common:3.13.2'
+    implementation 'com.netflix.conductor:conductor-mysql-persistence:3.13.3'
+    implementation 'com.netflix.conductor:conductor-common:3.13.3'
     implementation 'org.flywaydb:flyway-mysql:9.12.0'
     implementation 'org.flywaydb:flyway-core:9.12.0'
 
+    runtimeOnly 'com.netflix.conductor:conductor-zookeeper-lock:3.13.3'
     runtimeOnly "org.glassfish.jaxb:jaxb-runtime:${revJAXB}"
-
+   
     testImplementation project(':conductor-rest')
     testImplementation project(':conductor-common')
     testImplementation "io.grpc:grpc-testing:${revGrpc}"

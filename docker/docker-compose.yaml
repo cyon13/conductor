@@ -4,7 +4,7 @@ services:
   conductor-server:
     environment:
       - CONFIG_PROP=config-local.properties
-    image: harbor.nexr.kr/denver/conductor-server:test
+    image: harbor.nexr.kr/denver/conductor-server:v3.13.3
     build:
       context: ../
       dockerfile: docker/server/Dockerfile
@@ -31,7 +31,7 @@ services:
   conductor-ui:
     environment:
       - WF_SERVER=http://conductor-server:8080
-    image: harbor.nexr.kr/denver/conductor-ui:test
+    image: harbor.nexr.kr/denver/conductor-ui:v3.13.3
     build:
       context: ../
       dockerfile: docker/ui/Dockerfile

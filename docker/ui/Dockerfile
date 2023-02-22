@@ -6,8 +6,10 @@ LABEL maintainer="Netflix OSS <conductor@netflix.com>"
 
 # Install the required packages for the node build
 # to run on alpine
-RUN apk update && apk add --no-cache python3 py3-pip make g++
+RUN apk update && apk add --no-cache python3 py3-pip make g++ tzdata \
+ && ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
  
+
 # A directory within the virtualized Docker environment
 # Becomes more relevant when using Docker Compose later
 WORKDIR /usr/src/app
